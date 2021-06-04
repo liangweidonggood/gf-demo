@@ -1,6 +1,7 @@
 package service
 
 import (
+	"context"
 	"errors"
 	"fmt"
 	"gf-demo/app/dao"
@@ -47,4 +48,25 @@ func (s *userService) CheckNickName(nickname string) bool {
 	} else {
 		return i == 0
 	}
+}
+
+// 用户登录，成功返回用户信息，否则返回nil; passport应当会md5值字符串
+func (s *userService) SignIn(ctx context.Context, passport, password string) error {
+	var user *model.User
+	err := dao.User.Where("passport=? and password=?", passport, password).Scan(&user)
+	if err != nil {
+		return err
+	}
+	if user == nil {
+		return errors.New("账号或密码错误")
+	}
+	if err := Session.SetUser(ctx, user); err != nil {
+		return err
+	}
+	Context.SetUser(ctx, &model.ContextUser{
+		Id:       user.Id,
+		Passport: user.Passport,
+		Nickname: user.Nickname,
+	})
+	return nil
 }

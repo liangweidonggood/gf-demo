@@ -27,3 +27,9 @@ type UserServiceSignUpReq struct {
 	Password string
 	Nickname string
 }
+
+// 登录请求参数，用于前后端交互参数格式约定
+type UserApiSignInReq struct {
+	Passport string `v:"required#账号不能为空"`
+	Password string `v:"required#密码不能为空"`
+}
