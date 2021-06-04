@@ -33,3 +33,13 @@ type UserApiSignInReq struct {
 	Passport string `v:"required#账号不能为空"`
 	Password string `v:"required#密码不能为空"`
 }
+
+// 账号唯一性检测请求参数，用于前后端交互参数格式约定
+type UserApiCheckPassportReq struct {
+	Passport string `v:"required#账号不能为空"`
+}
+
+// 昵称唯一性检测请求参数，用于前后端交互参数格式约定
+type UserApiCheckNickNameReq struct {
+	Nickname string `v:"required#昵称不能为空"`
+}

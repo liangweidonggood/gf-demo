@@ -4,7 +4,8 @@
 	ServerRoot  = "public"
 	ServerAgent = "gf-app"
 	LogPath     = "/tmp/log/gf-app/server"
-
+    NameToUriType  = 2
+    RouteOverWrite = true
 # Logger.
 [logger]
     Path        = "/tmp/log/gf-app"
@@ -26,7 +27,16 @@
         Path   = "/tmp/log/gf-app/sql"
         Level  = "all"
         Stdout = true
-
+# swagger api页面查看账号密码
+[swagger]
+    user        = "123"
+    pass        = "123"
+    schemes     = ["http"]
+    version     = "1.0"
+    title       = "示例服务API"
+    description = """
+`GoFrame`基础开发框架示例服务API接口文档。
+    """
 # GF-CLI工具配置
 [gfcli]
     # 自定义DAO生成配置(默认是读取database配置)

@@ -70,3 +70,21 @@ func (s *userService) SignIn(ctx context.Context, passport, password string) err
 	})
 	return nil
 }
+
+// 判断用户是否已经登录
+func (s *userService) IsSignedIn(ctx context.Context) bool {
+	if v := Context.Get(ctx); v != nil && v.User != nil {
+		return true
+	}
+	return false
+}
+
+// 用户注销
+func (s *userService) SignOut(ctx context.Context) error {
+	return Session.RemoveUser(ctx)
+}
+
+// 获得用户信息详情
+func (s *userService) GetProfile(ctx context.Context) *model.User {
+	return Session.GetUser(ctx)
+}

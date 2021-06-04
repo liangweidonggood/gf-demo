@@ -9,6 +9,7 @@ import (
 
 func init() {
 	s := g.Server()
+	// 分组路由注册方式
 	s.Group("/", func(group *ghttp.RouterGroup) {
 		group.Middleware(
 			service.Middleware.Ctx,
@@ -16,5 +17,9 @@ func init() {
 		)
 		group.ALL("/hello", api.Hello)
 		group.ALL("/user", api.User)
+		group.Group("/", func(group *ghttp.RouterGroup) {
+			group.Middleware(service.Middleware.Auth)
+			group.ALL("/user/profile", api.User.Profile)
+		})
 	})
 }
