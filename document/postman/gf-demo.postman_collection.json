@@ -1,0 +1,38 @@
+{
+	"info": {
+		"_postman_id": "4e8e1b00-54f5-4d50-b211-b6ae14b8614e",
+		"name": "gf-demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "注册",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nickname\":\"test\",\r\n    \"passport\":\"test123\",\r\n    \"password\":\"123456\",\r\n    \"password2\":\"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8199/user/sign-up",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8199",
+					"path": [
+						"user",
+						"sign-up"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
