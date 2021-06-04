@@ -111,7 +111,7 @@ func (a *userApi) CheckNickName(r *ghttp.Request) {
 	if err := r.Parse(&data); err != nil {
 		response.JsonExit(r, 1, err.Error())
 	}
-	if data.Nickname != "" && service.User.CheckNickName(data.Nickname) {
+	if data.Nickname != "" && !service.User.CheckNickName(data.Nickname) {
 		response.JsonExit(r, 1, "昵称已经存在", false)
 	}
 	response.JsonExit(r, 0, "ok", true)
