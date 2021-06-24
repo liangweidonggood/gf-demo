@@ -43,3 +43,14 @@
     [[gfcli.gen.dao]]
         link   = "mysql:root:123@tcp(192.168.230.129:3306)/gf-demo"
         tables = "user"
+    # 构建 gf build
+    [gfcli.build]
+        name     = "my-application"
+        arch     = "amd64"
+        system   = "linux"
+        mod      = "none"
+        cgo      = 0
+        pack     = "config,i18n,public,template" # 打包至二进制的目录
+        version  = ""
+        output   = "./bin"
+        extra    = ""
